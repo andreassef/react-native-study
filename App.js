@@ -10,33 +10,34 @@ import React, { Fragment } from 'react';
 import {
   Text,
   Image,
-  ScrollView
+  ScrollView,
+  Dimensions,
+  StyleSheet
 } from 'react-native';
 
-
+const largura = Dimensions.get('screen').width;
 const App = ()  => {
   return (
     <ScrollView>
       <Text>André</Text>
       <Image 
         source={require("./resource/img/alura.jpg")} 
-        style={
-          estilos
-        }
-        />
+        style={estilo.imagem}
+      />
       <Text>Stela</Text>
       <Image 
         source={require("./resource/img/alura.jpg")} 
-        style={
-          estilos
-        }
+        style={estilo.imagem}
         />
     </ScrollView>
     ) 
   };
 
-  const estilos = {
-    width: 380,
-    height: 400
-  }
+  const estilo = StyleSheet.create({
+    imagem: {
+      width: largura,
+      height: largura
+    }
+  })
+
 export default App;
