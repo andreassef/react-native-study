@@ -6,11 +6,11 @@ import {
 } from 'react-native';
 import estilo from './estilo';
 
-const Cabecalho = ({nomeUsuario}) => {
+const Cabecalho = ({nomeUsuario, urlImage}) => {
     return (
         <View style={ estilo.cabecalho}> 
             <Image 
-                source={require('../../../resource/img/s2.png')}
+                source={ {uri: urlImage }}
                 style={estilo.fotoUsuario} />
             <Text>{nomeUsuario}</Text>
 
