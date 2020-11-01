@@ -1,11 +1,24 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import {
     Image,
-    Text
+    Text,
+    TouchableOpacity,
+    View
 } from 'react-native';
+import { curtirFoto, verificaLike } from '../../api/curtidas';
 import estilos from './estilos';
 
-const Foto = ( {urlFoto, descricao, quantidadeDeLikes} ) => {
+const Foto = ( { urlFoto, descricao, quantidadeDeLikes } ) => {
+
+  const [curtiu, setCurtiu] = useState(false);
+  const [likes, setLikes] = useState(quantidadeDeLikes);
+  
+  const clicouCurtir = () => {
+    const [novoEstadoCurtiu, quantidade] = curtirFoto(curtiu, likes);
+    setLikes(quantidade);
+    setCurtiu(novoEstadoCurtiu);
+  }
+
   return (
     <Fragment>
         <Image 
@@ -13,20 +26,18 @@ const Foto = ( {urlFoto, descricao, quantidadeDeLikes} ) => {
             style={ estilos.imagem}
         />
         <Text> {descricao} </Text>
-        <Image 
-            source={ verificaLike(quantidadeDeLikes) }
-            style={ estilos.like } 
-        />
+        <View style={ estilos.viewLike }>
+            <TouchableOpacity onPress={clicouCurtir}>
+                <Image 
+                    source={ verificaLike(curtiu) }
+                    style={ estilos.like } 
+                />
+            </TouchableOpacity>
+            <Text> curtidas {likes} </Text>
+        </View>
     </Fragment>
 ) 
 };
 
-const verificaLike = (quantidadeDeLikes) => {
-    if(quantidadeDeLikes > 0) {
-        return require('../../../resource/img/s2-checked.png')
-    } else {
-        return require('../../../resource/img/s2.png')
-    }
-}
 
 export default Foto;
