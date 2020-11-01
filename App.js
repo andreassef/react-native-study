@@ -5,7 +5,9 @@ import {
 } from 'react-native';
 import { Cabecalho } from './src/Components/Cabecalho';
 import { Foto } from './src/Components/Foto';
+import { Comentarios } from './src/Components/Comentarios';
 import lerFotos from './src/api/feed';
+
 
 const App = () => {
   const [fotos, setFotos] = useState([]);
@@ -31,6 +33,7 @@ const App = () => {
               descricao = { item.description }
               quantidadeDeLikes = { item.likes }
             />
+            <Comentarios comentarios = { item.comentarios } />
           </Fragment>
         }
       />
