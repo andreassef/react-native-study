@@ -9,6 +9,7 @@ import { Foto } from '../../Components/Foto';
 import { Comentarios } from '../../Components/Comentarios';
 import lerFotos from '../../api/feed';
 import { curtirFoto, verificaLike } from '../../api/curtidas';
+import adicionarComentarios from '../../api/comentariosAPI';
 
 
 const Feed = () => {
@@ -41,7 +42,10 @@ const Feed = () => {
               curtirFoto = {curtirFoto}
               verificaLike = {verificaLike}
             />
-            <Comentarios comentarios = { item.comentarios } />
+            <Comentarios 
+                comentarios = { item.comentarios }
+                adicionarComentarios = { adicionarComentarios }
+                />
           </Fragment>
         }
       />

@@ -2,16 +2,12 @@ import React, { Fragment, useState } from 'react';
 import { FlatList, Text, TextInput, Image, View, TouchableOpacity } from "react-native";
 import estilos from './estilos';
 
-const Comentarios = ( { comentarios } ) => {
+const Comentarios = ( { comentarios, adicionarComentarios } ) => {
 
     const [estComentarios, setComentario] = useState( comentarios );
     const adicionarComentario = () => {
         limparCampoInput.clear();
-        const novoComentario = {
-            date: Date.now(),
-            text: conteudoCampoInput,
-            userName: 'André Assef'
-        }
+        const novoComentario = adicionarComentarios(conteudoCampoInput, 'Assef');
 
         setComentario( [...estComentarios, novoComentario ] );
     }
