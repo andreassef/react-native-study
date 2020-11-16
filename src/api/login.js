@@ -19,11 +19,11 @@ const efetuaLogin = async (usuario, senha) => {
     }
     const resposta = await fetch(`http://${url}:3030/users/login`, cabecalhoHTTP);
     if(resposta.ok) {
-        //conseguiu logar
+        // pegando token que veio do cabecalho
+        return resposta.headers.get('x-access-token');
     }else {
         throw new Error('Nao foi possivel efetuar o login');
     }
-    console.warn(resposta);
 }
 
 export default efetuaLogin;
