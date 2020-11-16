@@ -5,14 +5,21 @@ import {
   Button,
   View
 } from 'react-native';
+import efetuaLogin from '../../api/login';
 import estilos from './estilos'
 
 
 const Login = () => {
     const [usuario, setUsuario] = useState("");
     const [senha, setSenha] = useState("");
-    const tentarLogar = () => {
-      console.warn('logando', usuario, senha);
+    const [mesagemErro, setMessagemErro] = useState("");
+
+    const tentarLogar = async() => {
+        try {
+            await efetuaLogin(usuario, senha);
+        } catch (error) {
+            setMessagemErro(error.message);
+        }
   }
  
   return (
@@ -29,6 +36,7 @@ const Login = () => {
                 style={estilos.inputs}
                 onChangeText = { texto => setSenha(texto)}
               />
+              <Text>{mesagemErro}</Text>
           </View>
           <View style = {estilos.botaoView}> 
             <Button title= "Entrar" onPress = {tentarLogar} />
