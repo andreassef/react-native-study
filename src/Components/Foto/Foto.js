@@ -5,10 +5,10 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
-import { curtirFoto, verificaLike } from '../../api/curtidas';
+
 import estilos from './estilos';
 
-const Foto = ( { urlFoto, descricao, quantidadeDeLikes } ) => {
+const Foto = ( { urlFoto, descricao, quantidadeDeLikes, curtirFoto, verificaLike } ) => {
 
   const [curtiu, setCurtiu] = useState(false);
   const [likes, setLikes] = useState(quantidadeDeLikes);

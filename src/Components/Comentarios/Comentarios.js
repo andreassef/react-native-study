@@ -29,17 +29,17 @@ const Comentarios = ( { comentarios } ) => {
                         <Text> { item.text } </Text>
                     </View> 
                 }
-        />
-        <View style = { estilos.alinhado }> 
-            <TextInput
-                ref = { textoInput => limparCampoInput = textoInput} 
-                onChangeText = { texto => conteudoCampoInput = texto }
-                style = { {flex: 1} }
-                placeholder = { "Deixe um comentário "}
             />
-            <TouchableOpacity onPress = { adicionarComentario }> 
-                <Image style = {estilos.imgSend} source = { require('../../../resource/img/send.png')} />
-            </TouchableOpacity>
+            <View style = { estilos.alinhado }> 
+                <TextInput
+                    ref = { textoInput => limparCampoInput = textoInput} 
+                    onChangeText = { texto => conteudoCampoInput = texto }
+                    style = { {flex: 1} }
+                    placeholder = { "Deixe um comentário "}
+                />
+                <TouchableOpacity onPress = { adicionarComentario }> 
+                    <Image style = {estilos.imgSend} source = { require('../../../resource/img/send.png')} />
+                </TouchableOpacity>
             </View>
        </Fragment>
     );
